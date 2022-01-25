@@ -5,7 +5,7 @@ services:
     image: traefik:1.7
     command: --api --docker
     ports:
-      - "80:80"
+      - "81:80"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

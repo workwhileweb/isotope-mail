@@ -28,11 +28,12 @@ const stateFromParams = params => ({
     serverHost: params.has('serverHost') ? params.get('serverHost') : '',
     serverPort: params.has('serverPort') ? params.get('serverPort').replace(/[^0-9]*/g, '') : DEFAULT_IMAP_PORT,
     user: params.has('user') ? params.get('user') : '',
-    password: '',
+    password: params.has('password') ? params.get('password') : '',
     imapSsl: params.has('imapSsl') ? params.get('imapSsl') === 'true' : DEFAULT_IMAP_SSL,
     smtpHost: params.has('smtpHost') ? params.get('smtpHost') : '',
     smtpPort: params.has('smtpPort') ? params.get('smtpPort').replace(/[^0-9]*/g, '') : DEFAULT_SMTP_PORT,
-    smtpSsl: params.has('smtpSsl') ? params.get('smtpSsl') === 'true' : DEFAULT_SMTP_SSL
+    smtpSsl: params.has('smtpSsl') ? params.get('smtpSsl') === 'true' : DEFAULT_SMTP_SSL,
+    autologin: params.has('autologin') ? params.get('autologin') === true : false
   },
   advanced: false
 });
@@ -50,6 +51,15 @@ export class Login extends Component {
     }
     this.onFieldChange = this.onFieldChange.bind(this);
     this.login = this.login.bind(this);
+  }
+
+  componentDidMount() {
+    const {autologin} = this.state;
+    if (autologin) {
+      setTimeout(() => {
+        // console.log('do auto login');
+      }, 100);
+    }
   }
 
   render() {

@@ -1,7 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-MAINTAINER Marc Nuri <marc@marcnuri.com>
-LABEL MAINTAINER "Marc Nuri" <marc@marcnuri.com>
+LABEL MAINTAINER ""
 
 EXPOSE 9010
 
